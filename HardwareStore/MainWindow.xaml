@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HardwareStore"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Магазин техники" Height="450" Width="850" WindowStartupLocation="CenterScreen">
     <Grid>
-        ffff
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="150*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="190*"/>
+        </Grid.RowDefinitions>
+        <Rectangle Grid.RowSpan="2" Fill="#FF828B96"/>
+        <Rectangle Grid.ColumnSpan="2" Fill="#FF828B96"/>
+        <Image Source="\Resources\logo.png"/>
+        <TextBlock Grid.Column="2" HorizontalAlignment="Center" x:Name="TitleTb">Hardware Store</TextBlock>
+        <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+            <Button x:Name="OnAdminBtn" Click="OnAdminBtn_Click">
+                <TextBlock FontSize="10">Включить<LineBreak/>админа</TextBlock>
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>

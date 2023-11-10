@@ -24,5 +24,10 @@ namespace HardwareStore
         {
             InitializeComponent();
         }
+
+        private void OnAdminBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
