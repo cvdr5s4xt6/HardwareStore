@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="HardwareStore.Components.ServiceUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HardwareStore.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="300">
+    <Border BorderBrush="LightGray" BorderThickness="2" Margin="5" Width="290"  x:Name="MainBorder">
+        <Grid Margin="5">
+            <RowDefinition Height="166*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="25*"/>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" x:Name="ServiceImg" Source="\Resources\logo.png"></Image>
+            <TextBlock x:Name="TitleTb" Grid.Row="1" Grid.ColumnSpan="2"></TextBlock>
+            <TextBlock Grid.Row="2" x:Name="CosTb" TextDecorations="Strikethrough"></TextBlock>
+            <StackPanel Orientation="Horizontal" Grid.Row="5">
+                <Button x:Name="EditBtn" Click="EditBtn_Click">Редактировать</Button>
+                <Button Grid.Column="2" x:Name="DeleteBtn" Click="DeleteBtn_Click">Удалить</Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

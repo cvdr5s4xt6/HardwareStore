@@ -23,6 +23,14 @@
             <Button x:Name="OnAdminBtn" Click="OnAdminBtn_Click">
                 <TextBlock FontSize="10">Включить<LineBreak/>админа</TextBlock>
             </Button>
+            <PasswordBox x:Name="PasswordPb" Padding="5" Height="35" Margin="5"></PasswordBox>
+            <Button x:Name="OffAdminBtn" Click="OffAdminBtn_Click">
+                <TextBlock FontSize="10">Выключить<LineBreak/>админа</TextBlock>
+            </Button>
+            <Button x:Name="BackBtn" Click="BackBtn_Click">Назад</Button>
+            
         </StackPanel>
+        
+        <Frame NavigationUIVisibility="Hidden" x:Name="MainFrame" Grid.Row="1" Grid.Column="1"></Frame>
     </Grid>
 </Window>

@@ -13,5 +13,8 @@ namespace HardwareStore
     /// </summary>
     public partial class App : Application
     {
+        
+        public static MainWindow mainWindow;
+        public static bool isAdmin = false;
     }
 }
