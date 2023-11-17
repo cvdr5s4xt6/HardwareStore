@@ -8,20 +8,25 @@
              d:DesignHeight="500" d:DesignWidth="300">
     <Border BorderBrush="LightGray" BorderThickness="2" Margin="5" Width="290"  x:Name="MainBorder">
         <Grid Margin="5">
-            <RowDefinition Height="166*"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="166*"/>
                 <RowDefinition Height="35*"/>
                 <RowDefinition Height="35*"/>
                 <RowDefinition Height="35*"/>
                 <RowDefinition Height="35*"/>
                 <RowDefinition Height="25*"/>
             </Grid.RowDefinitions>
-            <Image Grid.Row="0" x:Name="ServiceImg" Source="\Resources\logo.png"></Image>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="100*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.ColumnSpan="2">
+                <Image Grid.Row="1" x:Name="ServiceImg" Source="\Resources\logo.png"></Image>
+            </StackPanel>
             <TextBlock x:Name="TitleTb" Grid.Row="1" Grid.ColumnSpan="2"></TextBlock>
             <TextBlock Grid.Row="2" x:Name="CosTb" TextDecorations="Strikethrough"></TextBlock>
-            <StackPanel Orientation="Horizontal" Grid.Row="5">
-                <Button x:Name="EditBtn" Click="EditBtn_Click">Редактировать</Button>
-                <Button Grid.Column="2" x:Name="DeleteBtn" Click="DeleteBtn_Click">Удалить</Button>
-            </StackPanel>
+            <Button Grid.Row="5" Grid.Column="0"  x:Name="EditBtn" Click="EditBtn_Click">Редактировать</Button>
+            <Button Grid.Row="5" Grid.Column="1" x:Name="DeleteBtn" Click="DeleteBtn_Click">Удалить</Button>
         </Grid>
     </Border>
 </UserControl>
