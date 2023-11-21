@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HardwareStore.Components;
+using HardwareStore.Components.PartialClass;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,47 +34,58 @@ namespace HardwareStore.Pages
         }
         private void Refresh()
         {
-            IEnumerable<> services = App.db.Product;
+            IEnumerable<Product> products = App.db.Product;
             if (SortCb.SelectedIndex != 0)
             {
                 if (SortCb.SelectedIndex == 1)
-                    services = services.OrderBy(x => x.TotalCost);
+                    products = products.OrderBy(x => x.TotalCost);
                 else
-                    services = services.OrderByDescending(x => x.TotalCost);
+                    products = products.OrderByDescending(x => x.TotalCost);
             }
             if (DiscountFilterCb.SelectedIndex != 0)
             {
                 if (DiscountFilterCb.SelectedIndex == 1)
-                    services = services.Where(x => x.Discount >= 0 && x.Discount < 5);
+                    products = products.Where(x => x.Discount >= 0 && x.Discount < 5);
                 if (DiscountFilterCb.SelectedIndex == 2)
-                    services = services.Where(x => x.Discount >= 5 && x.Discount < 15);
+                    products = products.Where(x => x.Discount >= 5 && x.Discount < 15);
                 if (DiscountFilterCb.SelectedIndex == 3)
-                    services = services.Where(x => x.Discount >= 15 && x.Discount < 30);
+                    products = products.Where(x => x.Discount >= 15 && x.Discount < 30);
                 if (DiscountFilterCb.SelectedIndex == 4)
-                    services = services.Where(x => x.Discount >= 30 && x.Discount < 70);
+                    products = products.Where(x => x.Discount >= 30 && x.Discount < 70);
                 if (DiscountFilterCb.SelectedIndex == 5)
-                    services = services.Where(x => x.Discount >= 70 && x.Discount < 100);
+                    products = products.Where(x => x.Discount >= 70 && x.Discount < 100);
             }
+            if (SearchTb.Text != null)
+            {
+                products = products.Where(x => x.Title.ToLower().Contains(SearchTb.Text.ToLower()) || x.Description.ToLower().Contains(SearchTb.Text.ToLower()));
+            }
+
+            ServiceWp.Children.Clear();
+            foreach (var product in products)
+            {
+                ServiceWp.Children.Add(new ServiceUserControl(products));
+            }
+            CountDataTb.Text = products.Count() + " из " + App.db.Product.Count();
         }
 
         private void DiscountFilterCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Refresh();
         }
 
         private void SortCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Refresh();
         }
 
         private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            Refresh();
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Refresh();
         }
     }
 }
